@@ -2,5 +2,4 @@ Introduction
 ============
 
 
-
-This product may contain traces of nuts.
+Dexterity content-type to feature items in a front-page or wherever in a site.
