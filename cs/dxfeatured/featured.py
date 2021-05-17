@@ -1,16 +1,16 @@
 from Products.Five.browser import BrowserView
-from plone.directives import dexterity
-from plone.directives import form
+from plone.dexterity.content import Item
+from plone.supermodel import model
 from plone.namedfile.field import NamedBlobImage
 from plone.namedfile.interfaces import IImageScaleTraversable
 from zope import schema
 from cs.dxfeatured import MessageFactory as _
-from zope.interface import implements
+from zope.interface import implementer
 from plone.app.textfield import RichText
 
 
 # Interface class; used to define content-type schema.
-class IFeatured(form.Schema, IImageScaleTraversable):
+class IFeatured(model.Schema, IImageScaleTraversable):
     """
     Featured Element
     """
@@ -46,8 +46,10 @@ except:
 # methods and properties. Put methods that are mainly useful for rendering
 # in separate view classes.
 
-class Featured(dexterity.Item):
-    implements(IFeatured)
+@implementer(IFeatured)
+class Featured(Item):
+    """
+    """
     # Add your class methods and properties here
 
 
