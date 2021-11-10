@@ -14,30 +14,53 @@ class IFeatured(form.Schema, IImageScaleTraversable):
     """
     Featured Element
     """
+
     # If you want a schema-defined interface, delete the form.model
     # line below and delete the matching file in the models sub-directory.
     # If you want a model-based interface, edit
     # models/featured.xml to define the content type
     # and add directives here as necessary.
     image = NamedBlobImage(
-            title=_(u"Lead Image"),
-            description=u"",
-            required=True,
-        )
+        title=_(u"Lead Image"),
+        description=u"",
+        required=True,
+    )
 
     link = schema.TextLine(
-        title=_(u'Link'),
-        description=_(u'This link will be for the carousel image link'),
+        title=_(u"Link"),
+        description=_(u"This link will be for the carousel image link"),
         required=True,
-        )
+    )
 
-    text = RichText(title=_(u'Featured text'),
+    text = RichText(
+        title=_(u"Featured text"),
         required=False,
-        )
+    )
+
+    carousel_hilabetea = schema.TextLine(
+        title=_(u"carousel_hilabetea"),
+        description=_(u"Portadako carousel nagusian bakarrik erabiltzeko"),
+        required=False,
+    )
+
+    carousel_eguna = schema.TextLine(
+        title=_(u"carousel_eguna"),
+        description=_(u"Portadako carousel nagusian bakarrik erabiltzeko"),
+        required=False,
+    )
+
+    carousel_ordua = schema.TextLine(
+        title=_(u"carousel_ordua"),
+        description=_(u"Portadako carousel nagusian bakarrik erabiltzeko"),
+        required=False,
+    )
+
+
 # Custom content-type class; objects created for this content type will
 # be instances of this class. Use this class to add content-type specific
 # methods and properties. Put methods that are mainly useful for rendering
 # in separate view classes.
+
 
 class Featured(dexterity.Item):
     implements(IFeatured)
