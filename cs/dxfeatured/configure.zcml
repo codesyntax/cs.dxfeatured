@@ -27,6 +27,14 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="cs.dxfeatured (uninstall)"
+      directory="profiles/uninstall"
+      description="Uninstalls the cs.dxfeatured add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
+      />
 
   <!-- -*- extra stuff goes here -*- -->
   <!-- -*- extra stuff goes here -*- -->
