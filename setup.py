@@ -27,7 +27,7 @@ setup(name='cs.dxfeatured',
       install_requires=[
           'setuptools',
           'plone.app.dexterity [relations]',
-          'plone.namedfile [blobs]',
+          'plone.namedfile',
       ],
       entry_points="""
       # -*- Entry points: -*-
