@@ -35,7 +35,7 @@ class IFeatured(model.Schema, IImageScaleTraversable):
         required=False,
         )
 try:
-    from plone.multilingualbehavior.interfaces import ILanguageIndependentField
+    from plone.app.multilingual.dx.interfaces import ILanguageIndependentField
     from zope.interface import alsoProvides
     alsoProvides(IFeatured['image'], ILanguageIndependentField)
 except:
