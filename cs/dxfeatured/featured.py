@@ -22,7 +22,7 @@ class IFeatured(model.Schema, IImageScaleTraversable):
     image = NamedBlobImage(
             title=_(u"Lead Image"),
             description=u"",
-            required=True,
+            required=False,
         )
 
     link = schema.TextLine(
