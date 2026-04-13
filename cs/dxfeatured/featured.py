@@ -1,43 +1,47 @@
-from Products.Five.browser import BrowserView
-from plone.directives import dexterity
-from plone.directives import form
-from plone.namedfile.field import NamedBlobImage
-from plone.namedfile.interfaces import IImageScaleTraversable
-from zope import schema
 from cs.dxfeatured import MessageFactory as _
-from zope.interface import implements
 from plone.app.textfield import RichText
+from plone.dexterity.content import Item
+from plone.namedfile.field import NamedBlobImage
+from Products.Five.browser import BrowserView
+from zope import schema
+from zope.interface import implementer
+from zope.interface import Interface
 
 
 # Interface class; used to define content-type schema.
-class IFeatured(form.Schema, IImageScaleTraversable):
+class IFeatured(Interface):
     """
     Featured Element
     """
+
     # If you want a schema-defined interface, delete the form.model
     # line below and delete the matching file in the models sub-directory.
     # If you want a model-based interface, edit
     # models/featured.xml to define the content type
     # and add directives here as necessary.
     image = NamedBlobImage(
-            title=_(u"Lead Image"),
-            description=u"",
-            required=True,
-        )
+        title=_("Lead Image"),
+        description="",
+        required=True,
+    )
 
     link = schema.TextLine(
-        title=_(u'Link'),
-        description=_(u'This link will be for the carousel image link'),
+        title=_("Link"),
+        description=_("This link will be for the carousel image link"),
         required=True,
-        )
+    )
 
-    text = RichText(title=_(u'Featured text'),
+    text = RichText(
+        title=_("Featured text"),
         required=False,
-        )
+    )
+
+
 try:
     from plone.multilingualbehavior.interfaces import ILanguageIndependentField
     from zope.interface import alsoProvides
-    alsoProvides(IFeatured['image'], ILanguageIndependentField)
+
+    alsoProvides(IFeatured["image"], ILanguageIndependentField)
 except:
     pass
 
@@ -46,9 +50,11 @@ except:
 # methods and properties. Put methods that are mainly useful for rendering
 # in separate view classes.
 
-class Featured(dexterity.Item):
-    implements(IFeatured)
+
+@implementer(IFeatured)
+class Featured(Item):
     # Add your class methods and properties here
+    pass
 
 
 # View class
