@@ -22,13 +22,13 @@ class IFeatured(model.Schema, IImageScaleTraversable):
     image = NamedBlobImage(
             title=_(u"Lead Image"),
             description=u"",
-            required=True,
+            required=False,
         )
 
     link = schema.TextLine(
         title=_(u'Link'),
         description=_(u'This link will be for the carousel image link'),
-        required=True,
+        required=False,
         )
 
     text = RichText(title=_(u'Featured text'),
